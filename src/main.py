@@ -8,22 +8,19 @@ from hooks.generate_message import generate_message
 
 def video_game():
     key = generate_number()
+    key_string = ''.join(map(str, key))
     tries = 0
     max_tries = 12
-
-    print(key)
 
     while tries < max_tries:
         user =  input("Ingresa tu intento: ")
         tries += 1
 
-        if len(user) != 1:
+        if len(user) != 4:
             print("Asegúrate de ingresar un numero correctamente.")
             continue
 
-        picas, fijas = generate_picas(key, int(user))
-        print(picas)
-        print(fijas)
+        picas, fijas = generate_picas(key_string, str(user))
 
         if fijas == 4:
             print(generate_message(tries))
